@@ -1,12 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Point and Learn</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Point & Learn</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#111" />
 </head>
 <body>
-  <h1>Point and Learn</h1>
-  <p>This is the starting page for your app.</p>
+  <header class="app-bar">
+    <h1>Point &amp; Learn</h1>
+  </header>
+
+  <main class="wrap">
+    <section class="camera">
+      <video id="video" playsinline autoplay muted></video>
+      <canvas id="frame" class="hidden"></canvas>
+      <div id="overlay" class="overlay hidden"></div>
+    </section>
+
+    <section class="controls">
+      <button id="btnStart" class="primary">Start camera</button>
+      <button id="btnScan" disabled>Scan</button>
+      <button id="btnFlip" disabled>Flip camera</button>
+    </section>
+
+    <section id="result" class="card hidden">
+      <div class="result-header">
+        <h2 id="label">—</h2>
+        <span id="confidence" class="chip"></span>
+      </div>
+      <p id="fact">Point the camera and tap <b>Scan</b>.</p>
+      <div id="source" class="source"></div>
+    </section>
+  </main>
+
+  <!-- TensorFlow.js + COCO-SSD (client-side model) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.18.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.2/dist/coco-ssd.min.js"></script>
+  <!-- App logic -->
+  <script src="script.js"></script>
 </body>
 </html>
